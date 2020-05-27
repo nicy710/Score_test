@@ -14,7 +14,7 @@ class Score:
     @staticmethod
     def process_game(game_button):
         while eval(ReadConfig().read_config(read_path.conf_path, 'BASE', 'run_flg')):
-            driver = webdriver.Chrome()
+            driver = webdriver.Firefox()
             # driver.maximize_window()
             driver.get(common_data.test_url)
             home_page = HomePage(driver)
