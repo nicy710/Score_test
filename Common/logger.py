@@ -9,4 +9,5 @@ fh = logging.FileHandler(read_path.log_path, encoding='utf-8')  # 输出到文�
 formatter = '%(asctime)s-%(levelname)s-%(filename)s-日志信息:%(message)s'
 # 日期格式
 dfmt = '%a, %d %b %Y %H:%M:%S'
-logging.basicConfig(level=logging.DEBUG, handlers=[fh, sh], format=formatter, datefmt=dfmt)
+# logging.basicConfig(level=logging.DEBUG, handlers=[fh, sh], format=formatter, datefmt=dfmt)
+logging.basicConfig(level=logging.DEBUG, handlers=[fh], format=formatter, datefmt=dfmt)
