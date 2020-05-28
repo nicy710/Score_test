@@ -23,7 +23,7 @@ class Score:
             logging.info('----------开始点击DOTA2游戏按钮----------')
             # home_page.judge_dota2_button().click_dota2_button()
             home_page.judge_game_button(game_button).click_game_button(game_button)
-            time.sleep(3)
+            time.sleep(5)
             # home_page.click_dota2_button()
             home_page.click_game_button(game_button)
             logging.info('----------点击成功！----------')
@@ -31,7 +31,7 @@ class Score:
             # 判断是否有进行中的游戏，如果有则进入游戏，没有则5分钟获取一次数据，直到有数据为止
             logging.info('----------开始进入进行中游戏----------')
             time.sleep(5)
-            home_page.judge_process_game()[0].click()
+            home_page.judge_process_game(game_button)[0].click()
 
             # 切换窗口
             handles = driver.window_handles
@@ -79,7 +79,7 @@ class Score:
 if __name__ == '__main__':
 
     try:
-        Score().process_game('DOTA2')
+        Score().process_game('英雄联盟')
     except Exception as e:
         SendAlarm().send_dingtalk_alarm('程序异常停止：{}'.format(e))
         raise e

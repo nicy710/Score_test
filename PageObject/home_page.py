@@ -52,15 +52,15 @@ class HomePage(HomePageLocator, BasePage):
                         process_game_list.append(i)
         return process_game_list
 
-    def judge_process_game(self):
+    def judge_process_game(self, game_name):
         """判断是否有进行中比赛，有则返回进行中的比赛，没有则每5分钟获取一次数据，直到有比赛"""
         process_game = self.get_process_game()
         retry_count = 0
         while not process_game:
             time.sleep(10)
-            self.click_dota2_button()
+            self.click_game_button(game_name)
             retry_count += 1
-            logging.info('----------点击了{}次DOTA2按钮----------'.format(retry_count))
+            logging.info('----------点击了{}次{}按钮----------'.format(retry_count, game_name))
             time.sleep(3)
             process_game = self.get_process_game()
         logging.info('----------进行中的比赛有{}场----------'.format(len(process_game)))
